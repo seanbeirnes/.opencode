@@ -13,6 +13,19 @@ git clone <repository-url> ~/.config/opencode
 
 Restart OpenCode after cloning so it discovers the commands and skills.
 
+## Secret Scanning
+
+The Gitleaks GitHub Actions workflow scans the complete repository history on pull requests and every branch pushed to the GitHub repository.
+
+To also scan before each local push, configure the path to your Gitleaks executable and enable the versioned hook:
+
+```sh
+git config --local gitleaks.path /absolute/path/to/gitleaks
+ln -sf ../../.githooks/pre-push .git/hooks/pre-push
+```
+
+The executable path is stored only in the clone's `.git/config`; it is not committed. The hook blocks the push when Gitleaks detects a secret, although Git hooks can be explicitly bypassed with `git push --no-verify`.
+
 ## Commands
 
 | Command | Purpose |
@@ -39,9 +52,11 @@ Review these permissions before adapting the configuration to your own workflow.
 
 ```text
 .
+├── .githooks/      # Versioned local Git hooks
+├── .github/        # GitHub Actions workflows
 ├── commands/       # Slash-command entry points
 ├── skills/         # Reusable agent workflows and supporting files
-├── LICENSE          # Repository-wide MIT license
+├── LICENSE         # Repository-wide MIT license
 ├── opencode.json   # OpenCode permissions and configuration
 └── README.md
 ```

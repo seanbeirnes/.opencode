@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+set -u
+
+gitleaks_bin=$(git config --path --get gitleaks.path)
+
+if [ -z "$gitleaks_bin" ] || [ ! -x "$gitleaks_bin" ]; then
+  printf '%s\n' 'error: configured gitleaks executable not found' >&2
+  printf '%s\n' 'Set it with: git config --local gitleaks.path /path/to/gitleaks' >&2
+  exit 1
+fi
+
+printf '%s\n' 'Running Gitleaks before push...'
+"$gitleaks_bin" git --redact --log-opts="--all" .
