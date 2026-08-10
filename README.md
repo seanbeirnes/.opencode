@@ -41,9 +41,14 @@ Review these permissions before adapting the configuration to your own workflow.
 .
 ├── commands/       # Slash-command entry points
 ├── skills/         # Reusable agent workflows and supporting files
+├── LICENSE          # Repository-wide MIT license
 ├── opencode.json   # OpenCode permissions and configuration
 └── README.md
 ```
+
+## License
+
+Original content in this repository is available under the [MIT License](LICENSE). Adapted skills remain subject to the license and attribution included in their respective directories.
 
 ## Credits
 

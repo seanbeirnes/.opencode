@@ -2,6 +2,20 @@ node_modules
 package.json
 bun.lock
 
+# Environment and credential files
+.env
+.env.*
+!.env.example
+!.env.sample
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+service-account*.json
+secrets.json
+auth.json
+
 ### Linux ###
 *~
 
