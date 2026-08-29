@@ -14,7 +14,7 @@ I do not run when the branch is on `main` or `master`.
 1. Identify the current Git repository and branch. If the branch is on `main` or `master`, alert the user and stop.
 2. Interpret any user-provided arguments as optional context, such as the base branch, title guidance, or whether to create a draft pull request.
 3. Identify the upstream or default base branch and its merge base with the current branch. Inspect the complete committed branch diff, changed files, and commit messages. Include uncommitted changes only when the user explicitly requests working-tree analysis.
-4. When `gh` is available and authenticated, check whether the current branch already has an associated pull request. If one exists, do not create a duplicate; report its URL and relevant details, then stop.
+4. When `gh` is available and authenticated, check whether the current branch already has an associated pull request. If one exists and has no content, continue. Otherwise, alert the user by stating the url and a PR content summary.
 5. Review available test results and inspect the diff for added, modified, renamed, or removed test files and test cases. Infer test coverage changes from the code changes without claiming that inferred tests were executed.
 6. Draft one concise pull-request title that reflects the primary purpose of the branch.
 7. Draft the description using this exact template:
